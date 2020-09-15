@@ -1,8 +1,9 @@
-# Paper
+# PA2 tbd.
 
-* Basic LaTeX template for writing papers
-* Batteries included: [Github Actions](https://github.com/features/actions) to build PDF on each repository push
+> Abstract tbd.
 
-## More
+## Download Paper
 
-* *❤️ Hassle free LaTeX with vscode & Docker: https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop*
+![Build and Upload Release Assets](https://github.com/swissmanu/mse-paper-pa2/workflows/Build%20and%20Upload%20Release%20Assets/badge.svg)
+
+See https://github.com/swissmanu/mse-pa2-paper/releases for the latest version.

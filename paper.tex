@@ -1,40 +1,47 @@
-\documentclass[12pt,a4paper]{article}
+\documentclass[sigplan,screen,nonacm,review]{acmart}
+% Class options:
+%  - review: Show line numbers for reviewers
+%  - nonacm: Hide ACM conference stuff
+
 \usepackage{ccicons}
 \usepackage{hyperref}
+\usepackage{minted}
+
+\setminted{autogobble=true, tabsize=2, linenos=true, frame=single, breaklines=true}
+
+% Top Matter: https://mirror.kumi.systems/ctan/macros/latex/contrib/acmart/acmart.pdf
+\title{PA2 tbd}
+\author{Manuel Alabor}
+\affiliation{
+	\institution{Eastern Switzerland University of Applied Sciences}
+	\city{Rapperswil}
+	\country{Switzerland}
+}
+\email{manuel.alabor@ost.ch}
+
 
 \begin{document}
-\begin{centering}
-	\Huge{The Title}
-	\par
-	\vspace{2ex}
 
-	\normalsize{
-		Manuel Alabor\\
-		Supervised by The Supervisor\\
-		\par
-		\vspace{2ex}
-		Eastern Switzerland University of Applied Sciences\\
-		\par
-		\vspace{2ex}
-		\today{}
-	}
-	\par
-	\vspace{2ex}
+\begin{abstract}
+	\input{./abstract.tex}
+\end{abstract}
 
-	\begin{quotation}
-		\small{
-			\noindent\textbf{Abstract}---\input{./abstract.tex}
-		}
-		\par
-		\vspace{2ex}
+\begin{CCSXML}
+	<ccs2012>
+	   <concept>
+		   <concept_id>10011007</concept_id>
+		   <concept_desc>Software and its engineering</concept_desc>
+		   <concept_significance>500</concept_significance>
+		   </concept>
+	 </ccs2012>
+\end{CCSXML}
 
-		\small{
-			\noindent\textbf{Keywords}: tbd.
-		}
-		\par
-		\vspace{4ex}
-	\end{quotation}
-\end{centering}
+\ccsdesc[500]{Software and its engineering}
+
+\keywords{reactive programming, debugging, empirical software engineering}
+
+\maketitle
+
 
 \section{Intro}
 Some Content \cite{Author:Year:Abbr:1111111}
@@ -43,9 +50,15 @@ Test
 \section{Intro}
 Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
 
-\bibliographystyle{splncs04}
-\bibliography{bibliography}
+\begin{acks}
+	We would like to thank Prof. Dr. Markus Stolze for his mentorship and many tireless review sessions.
+\end{acks}
 
 \section*{License}
 \ccby\thinspace\thinspace This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}.
+
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{bibliography}
+
 \end{document}
