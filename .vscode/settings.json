@@ -11,7 +11,6 @@
   },
   "dimmer.enabled": true,
   "latex-workshop.docker.enabled": true,
-  "latex-workshop.docker.image.latex": "swissmanu/latex",
   "latex-workshop.latex.tools": [
     {
       "name": "latexmk",

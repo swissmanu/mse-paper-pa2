@@ -5,12 +5,12 @@
 
 \usepackage{ccicons}
 \usepackage{hyperref}
-\usepackage{minted}
 
-\setminted{autogobble=true, tabsize=2, linenos=true, frame=single, breaklines=true}
+\usepackage{./tikzit}
 
 % Top Matter: https://mirror.kumi.systems/ctan/macros/latex/contrib/acmart/acmart.pdf
-\title{PA2 tbd}
+\title{Debugging of RxJS-based Applications}
+\subtitle{Implementation and Validation of a Prototype Solution}
 \author{Manuel Alabor}
 \affiliation{
 	\institution{Eastern Switzerland University of Applied Sciences}
@@ -23,40 +23,256 @@
 \begin{document}
 
 \begin{abstract}
-	\input{./abstract.tex}
+	Nice and tidy overview on this paper.
 \end{abstract}
 
-\begin{CCSXML}
-	<ccs2012>
-	   <concept>
-		   <concept_id>10011007</concept_id>
-		   <concept_desc>Software and its engineering</concept_desc>
-		   <concept_significance>500</concept_significance>
-		   </concept>
-	 </ccs2012>
-\end{CCSXML}
+% \begin{CCSXML}
+% 	<ccs2012>
+% 	   <concept>
+% 		   <concept_id>10011007</concept_id>
+% 		   <concept_desc>Software and its engineering</concept_desc>
+% 		   <concept_significance>500</concept_significance>
+% 		   </concept>
+% 	 </ccs2012>
+% \end{CCSXML}
 
-\ccsdesc[500]{Software and its engineering}
+% \ccsdesc[500]{Software and its engineering}
 
-\keywords{reactive programming, debugging, empirical software engineering}
+\keywords{reactive programming, debugging, empirical software engineering, human interaction design}
 
 \maketitle
 
+\section{Introduction}
+\label{sec:intro}
 
-\section{Intro}
-Some Content \cite{Author:Year:Abbr:1111111}
-Test
+\begin{itemize}
+	\item Intro on topic
+	\item Recap on previous work
+	\item Intro on cognitive walkthrough \cite{Wharton_Rieman_Clayton_Polson_1994}
+	\item What are we going to do here?
+\end{itemize}
 
-\section{Intro}
-Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+\section{Prototype Implementation}
+\label{sec:prototype}
 
-\begin{acks}
-	We would like to thank Prof. Dr. Markus Stolze for his mentorship and many tireless review sessions.
-\end{acks}
+\begin{itemize}
+	\item Prototype Scope
+	\item Why this scope?
+	\item Why Visual Studio Code extension?
+	\item Overview on Prototype
+	\item Relate prototype functionality to debugging process model \cite{Layman_Diep_Nagappan_Singer_Deline_Venolia_2013}
+\end{itemize}
+
+\section{Cognitive Walkthrough}
+\label{sec:cogitive-walkthrough}
+
+\begin{figure}
+	\centering
+	\tikzfig{steps-prototype}
+	\Description{}
+	\caption{Action Sequence Overview for Cognitive Walkthrough}
+	\label{fig:steps-prototype}
+\end{figure}
+
+\begin{itemize}
+	\item Wharton et al. \cite{Wharton_Rieman_Clayton_Polson_1994}
+	\item See Appendix~\ref{sec:persona} for full detail on the results of the cognitive walkthrough.
+	\item Present setup
+\end{itemize}
+
+
+\section{User Test}
+
+\begin{itemize}
+	\item Why? Validate prototype, validate cognitive walkthrough results, gain further insight on actual user behavior (Did we solve the problem? Did we create new ones?)
+	\item Study Design
+	\item Execution
+	\item Results
+	\item Interpretation
+\end{itemize}
+
+\section{Future Work}
+\label{sec:future}
+
+\begin{itemize}
+	\item Iterations on prototype
+\end{itemize}
+
+\section{Threats to Validity}
+\label{sec:threats}
+
+This study is subject to the following threats and limitations:
+
+\subsection{External Validity}
+
+\subsection{Internal Validity}
+
+\subsection{Construct Validity}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+\begin{itemize}
+	\item Wrap everything up
+	\item Outlook
+\end{itemize}
+
+% \begin{acks}
+% 	We would like to thank Prof. Dr. Markus Stolze for his mentorship and many tireless review sessions.
+% \end{acks}
 
 \section*{License}
 \ccby\thinspace\thinspace This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}.
 
+
+\appendix
+\section{Persona ``Roger Flow''}
+\label{sec:persona}
+
+\subsection{Profile}
+\begin{itemize}
+	\item Age: 29 years
+	\item Gender: Male
+	\item Education: BSc in Computer Science
+	\item Occupation: Frontend Software Engineer at Foobank
+\end{itemize}
+
+Roger started to work for Foobank 2 years ago as a frontend software engineer. As part of a small, interdisciplinary team of 7 people, Roger' and his team are responsible for developing and maintaining a trading application. This application relies heavily on real-time data, so the group decided to use reactive programming principles throughout the application. Roger knows traditional programming paradigms and the related debugging tools from his studies and personal experiences. He built up knowledge on RP and RxJS for the frontend part of their application after joining the team quickly, however.
+
+Today, Roger uses RxJS efficiently to build new features. He can solve simple problems reported by the product owner on his own. Working on more complicated issues is still something Roger struggles with: He often feels like his knowledge of traditional programming techniques and its debugging utilities are not enough. These tools feel "out of place" to him and do not provide the answers he is looking for. Roger does not like that, eventually, he has to consult one of his colleagues who have experience in RxJS for a longer time.
+
+\subsection{Goals}
+\begin{itemize}
+	\item Make complex business domains simple and easy to use for everyone
+	\item Build beautiful, responsive and easy-to-use user interfaces
+	\item Be a fully productive member of the team
+	\item Understand RxJS in complex setups better and deepen knowledge on it
+\end{itemize}
+
+\subsection{Frustrations}
+\begin{itemize}
+	\item Known debugging utilities seem unfit to provide answers regarding RP code
+\end{itemize}
+
+
+\section{Cognitive Walkthrough}
+\label{sec:cogitive-walkthrough-appendix}
+
+\subsection{Context}
+
+\subsubsection{User}
+
+See Appendix~\ref{sec:persona} ``Persona Roger Flow''
+
+\subsubsection{Environment}
+Visual Studio Code is installed on an arbitrary system. Support for TypeScript projects is enabled as well as the proof of concept implementation of our RxJS debugging extension is installed and enabled. A launch configuration to execute the project in the systems default browser is available. Further, an internet browser (e.g. Mozilla Firefox or Google Chrome) is available.
+
+\subsubsection{Task}
+
+TODO Make Measurable! SMART?
+
+I want to understand the values and life cycle events produced by the flatMap operator in the \texttt{index.ts} file of \texttt{problem-1}\footnote{\url{https://github.com/swissmanu/mse-pa1-experiment/blob/v1.0.2/src/problem-1/index.ts\#L18}} and how they affect the whole application.
+
+\subsubsection{Action Sequence}
+
+\subsection{Step-by-Step Analysis Phase}
+
+% Example on Result Presentation https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjWt8GT_dTsAhXOzqQKHexLDIEQFjALegQIAhAC&url=https%3A%2F%2Fuploads-ssl.webflow.com%2F57ae10c2ec62b90517b4a868%2F5bb6d71b73d32b86cdb42d94_Cognitive_Walk_Through_Report.pdf&usg=AOvVaw0grZYXtYWALT98cEZdGwUp
+
+\begin{enumerate}
+	\item Open \texttt{index.ts} in Visual Studio Code
+	      \begin{itemize}
+	      	\item Visual Studio Code: Shows contents of \texttt{index.ts} file
+	      	\item Success story:
+	      	      \begin{itemize}
+	      	      	\item This seems OK based on prior experience with Visual Studio code.
+	      	      \end{itemize}
+	      \end{itemize}
+
+	\item Move cursor the \texttt{flatMap} operator on line 18
+	      \begin{itemize}
+	      	\item Visual Studio Code: Show code actions icon in front of line 18
+	      	\item Success story:
+	      	      \begin{itemize}
+	      	      	\item This seems OK because the original task clearly states a question regarding this line/piece of source code. Hence, navigating here seems like the natural course of action.
+	      	      \end{itemize}
+	      \end{itemize}
+
+	\item Open code actions menu
+	      \begin{itemize}
+	      	\item Visual Studio Code: Show available code actions
+	      	\item Failure story:
+	      	      \begin{itemize}
+	      	      	\item Criterion: Will the user know that the correct action is available?
+	      	      	      \begin{itemize}
+	      	      	      	\item The user might know code actions for providing options to refactor a piece of code or quick fixes for code linting problems. It is questionable if they will expect functionality to inspect parts of a data flow graph here.
+	      	      	      \end{itemize}
+	      	      \end{itemize}
+	      \end{itemize}
+
+	\item Select "Probe Observable..." code actions
+	      \begin{itemize}
+	      	\item Visual Studio Code: Add \texttt{flatMap} operator on line 18 to "Observables" list in debugging view
+	      	\item Failure story:
+	      	      \begin{itemize}
+	      	      	\item Criterion: If the correct action is taken, will the user see that things are going ok?
+	      	      	      \begin{itemize}
+	      	      	      	\item The "Observables" list is part of the debugging view of Visual Studio Code. The user will not get any feedback that their action "Probe Observable..." was successful without changing the view manually to debugging and expanding the "Observables" panel in the lower left.
+	      	      	      \end{itemize}
+	      	      \end{itemize}
+	      \end{itemize}
+
+	\item Open "Observable Probe Monitor" view using command palette
+	      \begin{itemize}
+	      	\item Visual Studio Code: Show empty "Observable Probe Monitor" view
+	      	\item Failure story:
+	      	      \begin{itemize}
+	      	      	\item Criterion: Will the user know that the correct action is available?
+	      	      	      \begin{itemize}
+	      	      	      	\item A user might not be aware that the "Observable Probe Monitor" view is hidden as a command in the command palette. Hence, they might feel lost after adding the observable probe in the previous step.
+	      	      	      \end{itemize}
+	      	      	\item Criterion: If the correct action is taken, will the user see that things are going ok?
+	      	      	      \begin{itemize}
+	      	      	      	\item The user might get confused by the "Observable Probe Monitor" being blank by default.
+	      	      	      \end{itemize}
+	      	      \end{itemize}
+	      \end{itemize}
+
+	\item Execute "Problem 1" launch configuration
+	      \begin{itemize}
+	      	\item Visual Studio Code: Open default browser showing "Problem 1"
+	      	\item Default Browser: Show "Problem 1"
+	      	\item Success story:
+	      	      \begin{itemize}
+	      	      	\item This seems OK according the past experiences with Visual Studio Code's launch configurations.
+	      	      \end{itemize}
+	      \end{itemize}
+
+	\item Interact with "Problem 1" in the default browser
+	      \begin{itemize}
+	      	\item Visual Studio Code: "Observable Probe Monitor" traces values and life cycle events produced by the \texttt{flatMap} operator
+	      	\item Failure story:
+	      	      \begin{itemize}
+	      	      	\item Criterion: Will the user know that the correct action will achieve the desired effect?
+	      	      	      \begin{itemize}
+	      	      	      	\item The user might not be aware that they are expected to interact with "Problem 1" in the default browser in order to get live feedback in the "Observable Probe Monitor" of emitted values and life cycle events.
+	      	      	      \end{itemize}
+	      	      	\item Criterion: If the correct action is taken, will the user see that things are going ok?
+	      	      	      \begin{itemize}
+	      	      	      	\item The default browser might overlay Visual Studio Code and the "Observable Probe Monitor" view. This is why the user might miss the live trace of values and life cycle events logged to the "Observable Probe Monitor" view.
+	      	      	      \end{itemize}
+	      	      \end{itemize}
+	      \end{itemize}
+
+	\item Interpret the live trace of emitted values and life cycle events in the "Observable Probe Monitor" view
+	      \begin{itemize}
+	      	\item Visual Studio Code: Provide detail information to a traced item
+	      	\item Success story:
+	      	      \begin{itemize}
+	      	      	\item This seems OK based on the original task where the user wants to understand runtime behavior of the `flatMap` operator.
+	      	      \end{itemize}
+	      \end{itemize}
+\end{enumerate}
 
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{bibliography}
