@@ -161,17 +161,17 @@ Today, Roger uses RxJS efficiently to build new features. He can solve simple pr
 \subsection{Context}
 
 \subsubsection{User}
-
 See Appendix~\ref{sec:persona} ``Persona Roger Flow''
-
-\subsubsection{Environment}
-Visual Studio Code is installed on an arbitrary system. Support for TypeScript projects is enabled as well as the proof of concept implementation of our RxJS debugging extension is installed and enabled. A launch configuration to execute the project in the systems default browser is available. Further, an internet browser (e.g. Mozilla Firefox or Google Chrome) is available.
 
 \subsubsection{Task}
 
-TODO Make Measurable! SMART?
+I want to identify an issue in the code of ``Problem 1'', which is part of the observational experiment material from the precursor study ``Debugging of RxJS-based Applications''\cite{TODO}.
 
-I want to understand the values and life cycle events produced by the flatMap operator in the \texttt{index.ts} file of \texttt{problem-1}\footnote{\url{https://github.com/swissmanu/mse-pa1-experiment/blob/v1.0.2/src/problem-1/index.ts\#L18}} and how they affect the whole application.
+After I executed the program and inspected the UI, I was able to observe multiple, unexpected updates rendered in quick succession after I clicked the reset button at least once. Based on this evidence, I formulated my first debugging hypothesis around the \texttt{flatMap} operator on line 18 in the \texttt{index.ts}\footnote{\url{https://github.com/swissmanu/mse-pa1-experiment/blob/v1.0.2/src/problem-1/index.ts\#L18}} file: I suspect that the operator does not unsubscribe previously created observables. Eventually, this might results in the unexpected behavior. To proof my hypothesis, I want to inspect the operator more closely.
+
+\subsubsection{Environment}
+
+Visual Studio Code is installed on an arbitrary system. Support for TypeScript projects is enabled as well as the proof of concept implementation of the RxJS debugging extension is installed and enabled. A launch configuration to execute the project in the systems default browser is available. Further, an internet browser (e.g. Mozilla Firefox or Google Chrome) is present.
 
 \subsubsection{Action Sequence}
 
