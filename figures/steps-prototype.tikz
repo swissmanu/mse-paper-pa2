@@ -7,7 +7,7 @@
 		\node [style=taskstep, label={[label distance=0.1cm]right:Open Observable Probe Monitor}] (4) at (0, -8) {5};
 		\node [style=taskstep, label={[label distance=0.1cm]right:Launch Application}] (5) at (0, -10) {6};
 		\node [style=taskstep, label={[label distance=0.1cm]right:Interact with Application}] (6) at (0, -12) {7};
-		\node [style=taskstep, label={[label distance=0.1cm]right:Interpret Runtime Behavior of using Monitor}] (7) at (0, -14) {8};
+		\node [style=taskstep, label={[label distance=0.1cm]right:Interpret Runtime Behavior}] (7) at (0, -14) {8};
 	\end{pgfonlayer}
 	\begin{pgfonlayer}{edgelayer}
 		\draw [style=line] (0) to (1);

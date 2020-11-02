@@ -76,7 +76,7 @@
 
 \begin{itemize}
 	\item Wharton et al. \cite{Wharton_Rieman_Clayton_Polson_1994}
-	\item See Appendix~\ref{sec:persona} for full detail on the results of the cognitive walkthrough.
+	\item See Appendix~\ref{sec:cogitive-walkthrough-appendix} and for full detail on the results of the cognitive walkthroughs.
 	\item Present setup
 \end{itemize}
 
@@ -124,8 +124,12 @@ This study is subject to the following threats and limitations:
 \section*{License}
 \ccby\thinspace\thinspace This work is licensed under a \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International License}.
 
-
 \appendix
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{bibliography}
+
+
 \section{Persona ``Roger Flow''}
 \label{sec:persona}
 
@@ -160,121 +164,198 @@ Today, Roger uses RxJS efficiently to build new features. He can solve simple pr
 
 \subsection{Context}
 
+This cognitive walkthrough is based on the first problem given to subjects during the observational study of our previous work ``Debugging RxJS-based Applications''\cite{TODO}.
+
 \subsubsection{User}
 See Appendix~\ref{sec:persona} ``Persona Roger Flow''
 
 \subsubsection{Task}
 
-I want to identify an issue in the code of ``Problem 1'', which is part of the observational experiment material from the precursor study ``Debugging of RxJS-based Applications''\cite{TODO}.
-
-After I executed the program and inspected the UI, I was able to observe multiple, unexpected updates rendered in quick succession after I clicked the reset button at least once. Based on this evidence, I formulated my first debugging hypothesis around the \texttt{flatMap} operator on line 18 in the \texttt{index.ts}\footnote{\url{https://github.com/swissmanu/mse-pa1-experiment/blob/v1.0.2/src/problem-1/index.ts\#L18}} file: I suspect that the operator does not unsubscribe previously created observables. Eventually, this might results in the unexpected behavior. To proof my hypothesis, I want to inspect the operator more closely.
+After I started the ``Problem~1'' application and inspected its UI, I was able to observe multiple, unexpected updates rendered in quick succession after I clicked the reset button. Based on this evidence, I formulate my first debugging hypothesis: I suspect that the \texttt{flatMap} operator on Line~18 in the file \texttt{index.ts}\footnote{\url{https://github.com/swissmanu/mse-pa1-experiment/blob/v1.0.2/src/problem-1/index.ts\#L18}} does create multiple observables, which do not get unsubscribed when the reset button is clicked. This results in the observed behavior eventually. To proof my hypothesis, I want to inspect the life cycle events of the created observables more closely.
 
 \subsubsection{Environment}
 
-Visual Studio Code is installed on an arbitrary system. Support for TypeScript projects is enabled as well as the proof of concept implementation of the RxJS debugging extension is installed and enabled. A launch configuration to execute the project in the systems default browser is available. Further, an internet browser (e.g. Mozilla Firefox or Google Chrome) is present.
+Visual Studio Code with enabled TypeScript support is installed. The prototype of our RxJS debugging extension is installed as well. The source code of Problem~1 from our previous experiment is available. Further, an internet browser (e.g. Mozilla Firefox or Google Chrome) is present.
 
-\subsubsection{Action Sequence}
-
-\subsection{Step-by-Step Analysis Phase}
+\subsection{Walkthrough}
 
 % Example on Result Presentation https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwjWt8GT_dTsAhXOzqQKHexLDIEQFjALegQIAhAC&url=https%3A%2F%2Fuploads-ssl.webflow.com%2F57ae10c2ec62b90517b4a868%2F5bb6d71b73d32b86cdb42d94_Cognitive_Walk_Through_Report.pdf&usg=AOvVaw0grZYXtYWALT98cEZdGwUp
 
-\begin{enumerate}
-	\item Open \texttt{index.ts} in Visual Studio Code
+\subsubsection{Open File}
+Open \texttt{index.ts} in Visual Studio Code.
+
+\begin{itemize}
+	\item Visual Studio Code: Shows contents of \texttt{index.ts} file.
+	\item Success story:
 	      \begin{itemize}
-	      	\item Visual Studio Code: Shows contents of \texttt{index.ts} file
-	      	\item Success story:
+	      	\item We can expect the user to open \texttt{index.ts} since he already suspects a problem within this file as stated in the original task.
+	      \end{itemize}
+\end{itemize}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{walkthrough-screenshots/step1.png}
+	\Description{}
+	\caption{Visual Studio Code after opening the \texttt{index.ts} file.}
+	\label{fig:walkthrough-screesnhot-step-1}
+\end{figure}
+
+
+\subsubsection{Navigate to Operator}
+Move cursor the \texttt{flatMap} operator on Line~18.
+
+\begin{itemize}
+	\item Visual Studio Code: Shows code actions icon in front of Line~18.
+	\item Success story:
+	      \begin{itemize}
+	      	\item The original task clearly describes the hypothesis regarding this line/piece of source code. Hence, navigating here seems the natural course of action for the user.
+	      \end{itemize}
+\end{itemize}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{walkthrough-screenshots/step2.png}
+	\Description{}
+	\caption{Visual Studio Code after navigating cursor to the \texttt{flatMap} operator on Line~18.}
+	\label{fig:walkthrough-screesnhot-step-2}
+\end{figure}
+
+
+\subsubsection{Open Code Actions}
+Open the code actions menu by clicking the yellow light bulb icon.
+
+\begin{itemize}
+	\item Visual Studio Code: Shows available code actions.
+	\item Failure story:
+	      \begin{itemize}
+	      	\item Will the user know that the correct action is available?
 	      	      \begin{itemize}
-	      	      	\item This seems OK based on prior experience with Visual Studio code.
+	      	      	\item The user might know code actions for providing options to refactor a piece of code or quick fixes for code linting problems. It is questionable if he will expect functionality to inspect parts of a data flow graph here.
 	      	      \end{itemize}
 	      \end{itemize}
+\end{itemize}
 
-	\item Move cursor the \texttt{flatMap} operator on line 18
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{walkthrough-screenshots/step3and4.png}
+	\Description{}
+	\caption{Visual Studio Code indicating available code actions on Line~18 using a yellow light bulb icon.}
+	\label{fig:walkthrough-screesnhot-step-3}
+\end{figure}
+
+
+\subsubsection{Create Probe for Operator}
+Select ``Probe Observable...'' code action from the related menu.
+
+\begin{itemize}
+	\item Visual Studio Code: Adds \texttt{flatMap} operator on Line~18 to "Observables" list in debugging view.
+	\item Failure story:
 	      \begin{itemize}
-	      	\item Visual Studio Code: Show code actions icon in front of line 18
-	      	\item Success story:
+	      	\item If the correct action is taken, will the user see that things are going ok?
 	      	      \begin{itemize}
-	      	      	\item This seems OK because the original task clearly states a question regarding this line/piece of source code. Hence, navigating here seems like the natural course of action.
+	      	      	\item The ``Observables'' list is part of the debugging view of Visual Studio Code. The user will not get any feedback that his action ``Probe Observable...'' was successful without changing the view manually to debugging and expanding the ``Observables'' panel in the lower left.
 	      	      \end{itemize}
 	      \end{itemize}
+\end{itemize}
 
-	\item Open code actions menu
+
+\subsubsection{Open Observable Probe Monitor}
+Open the ``Observable Probe Monitor'' view using command palette.
+
+\begin{itemize}
+	\item Visual Studio Code: Shows empty ``Observable Probe Monitor'' view
+	\item Failure story:
 	      \begin{itemize}
-	      	\item Visual Studio Code: Show available code actions
-	      	\item Failure story:
+	      	\item Will the user know that the correct action is available?
 	      	      \begin{itemize}
-	      	      	\item Criterion: Will the user know that the correct action is available?
-	      	      	      \begin{itemize}
-	      	      	      	\item The user might know code actions for providing options to refactor a piece of code or quick fixes for code linting problems. It is questionable if they will expect functionality to inspect parts of a data flow graph here.
-	      	      	      \end{itemize}
+	      	      	\item The user might not be aware that the ``Observable Probe Monitor'' view is hidden within the command palette. Hence, they might feel lost after adding the observable probe in the previous step.
+	      	      \end{itemize}
+	      	\item If the correct action is taken, will the user see that things are going ok?
+	      	      \begin{itemize}
+	      	      	\item The user might get confused by the ``Observable Probe Monitor'' being blank by default.
 	      	      \end{itemize}
 	      \end{itemize}
+\end{itemize}
 
-	\item Select "Probe Observable..." code actions
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{walkthrough-screenshots/step5-1.png}
+	\Description{}
+	\caption{Visual Studio Codes command palette menu showing the ``Observable Probe Monitor'' command.}
+	\label{fig:walkthrough-screesnhot-step-5-1}
+\end{figure}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{walkthrough-screenshots/step5-2.png}
+	\Description{}
+	\caption{Visual Studio Code showing the empty Observable Probe Monitor on the right pane.}
+	\label{fig:walkthrough-screesnhot-step-5-2}
+\end{figure}
+
+\subsubsection{Launch Application}
+Execute ``Problem~1'' launch configuration
+
+\begin{itemize}
+	\item Visual Studio Code: Opens default browser showing ``Problem~1''
+	\item Default Browser: Shows ``Problem~1'' UI
+	\item Success story:
 	      \begin{itemize}
-	      	\item Visual Studio Code: Add \texttt{flatMap} operator on line 18 to "Observables" list in debugging view
-	      	\item Failure story:
+	      	\item The users previous experience with Visual Studio Code launch configuration allows assuming this the natural course of action in order to prepare himself for further inspection of the application.
+	      \end{itemize}
+\end{itemize}
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{walkthrough-screenshots/step6.png}
+	\Description{}
+	\caption{Visual Studi Code showing the debugging view after launching ``Problem~1''.}
+	\label{fig:walkthrough-screesnhot-step-6}
+\end{figure}
+
+\subsubsection{Interact with Application}
+Interact with ``Problem~1'' in the default browser.
+
+\begin{itemize}
+	\item Visual Studio Code: ``Observable Probe Monitor'' provides live telemetry information about values and life cycle events produced by the \texttt{flatMap} operator.
+	\item Failure story:
+	      \begin{itemize}
+	      	\item Will the user know that the correct action will achieve the desired effect?
 	      	      \begin{itemize}
-	      	      	\item Criterion: If the correct action is taken, will the user see that things are going ok?
-	      	      	      \begin{itemize}
-	      	      	      	\item The "Observables" list is part of the debugging view of Visual Studio Code. The user will not get any feedback that their action "Probe Observable..." was successful without changing the view manually to debugging and expanding the "Observables" panel in the lower left.
-	      	      	      \end{itemize}
+	      	      	\item The user might not be aware that he is expected to interact with ``Problem~1'' in the default browser in order to get live feedback in the ``Observable Probe Monitor''.
+	      	      \end{itemize}
+	      	\item If the correct action is taken, will the user see that things are going ok?
+	      	      \begin{itemize}
+	      	      	\item The default browser might overlay Visual Studio Code and the ``Observable Probe Monitor'' view. This is why the user might miss the live trace of values and life cycle events displayed in the ``Observable Probe Monitor''.
 	      	      \end{itemize}
 	      \end{itemize}
+\end{itemize}
 
-	\item Open "Observable Probe Monitor" view using command palette
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{walkthrough-screenshots/step7.png}
+	\Description{}
+	\caption{Google Chrome displaying the user interface of ``Problem~1'' ready to receive interactions.}
+	\label{fig:walkthrough-screesnhot-step-7}
+\end{figure}
+
+\subsubsection{Interpret Runtime Behavior}
+Interpret the live trace of emitted values and life cycle events in the ``Observable Probe Monitor'' view
+
+\begin{itemize}
+	\item Visual Studio Code: Provides detail information to a traced item
+	\item Success story:
 	      \begin{itemize}
-	      	\item Visual Studio Code: Show empty "Observable Probe Monitor" view
-	      	\item Failure story:
-	      	      \begin{itemize}
-	      	      	\item Criterion: Will the user know that the correct action is available?
-	      	      	      \begin{itemize}
-	      	      	      	\item A user might not be aware that the "Observable Probe Monitor" view is hidden as a command in the command palette. Hence, they might feel lost after adding the observable probe in the previous step.
-	      	      	      \end{itemize}
-	      	      	\item Criterion: If the correct action is taken, will the user see that things are going ok?
-	      	      	      \begin{itemize}
-	      	      	      	\item The user might get confused by the "Observable Probe Monitor" being blank by default.
-	      	      	      \end{itemize}
-	      	      \end{itemize}
+	      	\item The original task states that the user is interested in more close information regarding the \texttt{flatMap} operator. Since the ``Observable Probe Monitor'' provide such information in real-time, we can expect the user to use this information accordingly.
 	      \end{itemize}
+\end{itemize}
 
-	\item Execute "Problem 1" launch configuration
-	      \begin{itemize}
-	      	\item Visual Studio Code: Open default browser showing "Problem 1"
-	      	\item Default Browser: Show "Problem 1"
-	      	\item Success story:
-	      	      \begin{itemize}
-	      	      	\item This seems OK according the past experiences with Visual Studio Code's launch configurations.
-	      	      \end{itemize}
-	      \end{itemize}
-
-	\item Interact with "Problem 1" in the default browser
-	      \begin{itemize}
-	      	\item Visual Studio Code: "Observable Probe Monitor" traces values and life cycle events produced by the \texttt{flatMap} operator
-	      	\item Failure story:
-	      	      \begin{itemize}
-	      	      	\item Criterion: Will the user know that the correct action will achieve the desired effect?
-	      	      	      \begin{itemize}
-	      	      	      	\item The user might not be aware that they are expected to interact with "Problem 1" in the default browser in order to get live feedback in the "Observable Probe Monitor" of emitted values and life cycle events.
-	      	      	      \end{itemize}
-	      	      	\item Criterion: If the correct action is taken, will the user see that things are going ok?
-	      	      	      \begin{itemize}
-	      	      	      	\item The default browser might overlay Visual Studio Code and the "Observable Probe Monitor" view. This is why the user might miss the live trace of values and life cycle events logged to the "Observable Probe Monitor" view.
-	      	      	      \end{itemize}
-	      	      \end{itemize}
-	      \end{itemize}
-
-	\item Interpret the live trace of emitted values and life cycle events in the "Observable Probe Monitor" view
-	      \begin{itemize}
-	      	\item Visual Studio Code: Provide detail information to a traced item
-	      	\item Success story:
-	      	      \begin{itemize}
-	      	      	\item This seems OK based on the original task where the user wants to understand runtime behavior of the `flatMap` operator.
-	      	      \end{itemize}
-	      \end{itemize}
-\end{enumerate}
-
-\bibliographystyle{ACM-Reference-Format}
-\bibliography{bibliography}
+\begin{figure}[ht]
+	\centering
+	\includegraphics[width=\columnwidth]{walkthrough-screenshots/step8.png}
+	\Description{}
+	\caption{Visual Studio Code showing live telemetry in the ``Observable Probe Monitor''.}
+	\label{fig:walkthrough-screesnhot-step-8}
+\end{figure}
 
 \end{document}
