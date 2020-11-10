@@ -6,6 +6,6 @@
 *.fls
 *.log
 *.pdf
-*.synctex.gz
+*.synctex.gz*
 *.out
 comment.cut
